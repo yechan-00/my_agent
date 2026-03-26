@@ -8,3 +8,4 @@ dist/
 *.egg-info/
 .env
 .DS_Store
+.my_agent_memory.json

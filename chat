@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# 편의 별칭 — run 과 동일
+set -e
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:${PATH}"
+if ! command -v uv >/dev/null 2>&1; then
+  echo "uv 를 찾을 수 없습니다. 터미널에서 'which uv' 로 경로를 확인하거나 설치: https://docs.astral.sh/uv/" >&2
+  exit 1
+fi
+exec uv run --project "$ROOT" my-agent -e "$@"
